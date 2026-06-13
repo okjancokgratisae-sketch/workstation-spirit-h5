@@ -88,6 +88,7 @@ const RESULTS = {
 const Q = window.QUESTIONS;
 const SHARE_CONFIG = window.H5_SHARE_CONFIG || {};
 const ASSET_BASE = SHARE_CONFIG.assetBase || "./assets";
+const ASSET_VERSION = "20260613-avatar-fix-2";
 
 const state = {
   screen: "home",
@@ -124,11 +125,11 @@ function assetName(typeKey) {
 
 function shareCardPath(gender, typeKey) {
   const name = assetName(typeKey);
-  return `${ASSET_BASE}/share_cards/${gender}/${name}_${gender}_share_card.png`;
+  return `${ASSET_BASE}/share_cards/${gender}/${name}_${gender}_share_card.png?v=${ASSET_VERSION}`;
 }
 
 function characterPath(gender, typeKey) {
-  return `${ASSET_BASE}/characters/${gender}/${assetName(typeKey)}.png`;
+  return `${ASSET_BASE}/characters/${gender}/${assetName(typeKey)}.png?v=${ASSET_VERSION}`;
 }
 
 function render() {
