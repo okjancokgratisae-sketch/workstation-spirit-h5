@@ -88,7 +88,7 @@ const RESULTS = {
 const Q = window.QUESTIONS;
 const SHARE_CONFIG = window.H5_SHARE_CONFIG || {};
 const ASSET_BASE = SHARE_CONFIG.assetBase || "./assets";
-const ASSET_VERSION = "20260613-avatar-fix-2";
+const ASSET_VERSION = "20260614-fast-avatar";
 
 const state = {
   screen: "home",
@@ -132,6 +132,20 @@ function characterPath(gender, typeKey) {
   return `${ASSET_BASE}/characters/${gender}/${assetName(typeKey)}.png?v=${ASSET_VERSION}`;
 }
 
+function characterPreviewPath(gender, typeKey) {
+  return `${ASSET_BASE}/characters/${gender}/${assetName(typeKey)}_preview.png?v=${ASSET_VERSION}`;
+}
+
+function preloadImage(src) {
+  const img = new Image();
+  img.src = src;
+}
+
+function preloadGenderPreviews() {
+  preloadImage(characterPreviewPath("male", "T3"));
+  preloadImage(characterPreviewPath("female", "T3"));
+}
+
 function render() {
   window.scrollTo({ top: 0, behavior: "smooth" });
   if (state.screen === "home") renderHome();
@@ -156,6 +170,7 @@ function renderHome() {
       </div>
     </section>
   `;
+  preloadGenderPreviews();
 }
 
 function renderGender() {
@@ -183,7 +198,7 @@ function genderCard(gender, title, desc, typeKey) {
     <button class="gender-card${selected}" data-action="select-gender" data-gender="${gender}">
       <span class="gender-title">${title}</span>
       <span class="gender-desc">${desc}</span>
-      <img src="${characterPath(gender, typeKey)}" alt="${title}">
+      <img src="${characterPreviewPath(gender, typeKey)}" alt="${title}" loading="eager" decoding="async">
     </button>
   `;
 }
