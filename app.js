@@ -99,15 +99,15 @@ const state = {
 const app = document.querySelector("#app");
 
 const ASSET_SLUGS = {
-  "1": "01_rules",
-  "2": "02_support",
-  "3": "03_kpi",
-  "4": "04_soul",
-  "5": "05_logic",
-  "6": "06_risk",
-  "7": "07_fun",
-  "8": "08_decider",
-  "9": "09_noise"
+  T1: "01_rules",
+  T2: "02_support",
+  T3: "03_kpi",
+  T4: "04_soul",
+  T5: "05_logic",
+  T6: "06_risk",
+  T7: "07_fun",
+  T8: "08_decider",
+  T9: "09_noise"
 };
 
 function q(kind, title, options) {
