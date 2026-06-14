@@ -224,10 +224,8 @@ function renderQuiz() {
         </div>
         <div class="quiz-footer">
           <button class="btn secondary" data-action="prev" ${state.current === 0 ? "disabled" : ""}>上一题</button>
-          <div class="actions">
-            <button class="btn ghost" data-action="reset">重新开始</button>
-            <button class="btn" data-action="next" ${selected.length ? "" : "disabled"}>${state.current === Q.length - 1 ? "查看结果" : "下一题"}</button>
-          </div>
+          <button class="btn" data-action="next" ${selected.length ? "" : "disabled"}>${state.current === Q.length - 1 ? "查看结果" : "下一题"}</button>
+          <button class="btn ghost" data-action="reset">重新开始</button>
         </div>
       </div>
     </section>
@@ -265,11 +263,6 @@ function renderResult() {
             ${info("最怕搭子", result.fear)}
             ${info("朋友圈文案", result.share)}
           </div>
-          <div class="actions">
-            <button class="btn" data-action="copy-share">复制朋友圈文案</button>
-            <button class="btn secondary" data-action="share-h5">转发这个测试</button>
-            <button class="btn secondary" data-action="reset">重新测试</button>
-          </div>
         </div>
         <aside class="share-card">
           <img src="${shareCardPath(state.gender, computed.typeKey)}" alt="${type.name}${genderLabel}分享卡">
@@ -280,6 +273,11 @@ function renderResult() {
         <div class="score-list">
           ${scoreRows(computed.scores)}
         </div>
+      </div>
+      <div class="result-actions">
+        <button class="btn" data-action="copy-share">复制朋友圈文案</button>
+        <button class="btn secondary" data-action="share-h5">转发这个测试</button>
+        <button class="btn secondary" data-action="reset">重新测试</button>
       </div>
     </section>
   `;
