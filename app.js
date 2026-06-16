@@ -115,7 +115,7 @@ const RESULTS = {
 const Q = window.QUESTIONS;
 const SHARE_CONFIG = window.H5_SHARE_CONFIG || {};
 const ASSET_BASE = SHARE_CONFIG.assetBase || "../assets";
-const ASSET_VERSION = "20260615-human-v1";
+const ASSET_VERSION = "20260616-explain-v1";
 
 const state = {
   screen: "home",
@@ -245,6 +245,7 @@ function renderQuiz() {
         <div>
           <p class="question-meta">按第一反应选择</p>
           <h2>${question.title}</h2>
+          ${question.explain ? `<p class="question-explain">${question.explain}</p>` : ""}
         </div>
         <div class="option-list">
           ${question.options.map((option, index) => optionButton(option, index, selected)).join("")}
